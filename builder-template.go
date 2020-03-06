@@ -18,4 +18,5 @@ Vagrant.configure("2") do |config|
 	hyperv.maxmemory = 4096
 	hyperv.cpus = 4
   end
+  config.vm.network "public_network", bridge: "Default Switch"
 end
