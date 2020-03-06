@@ -7,7 +7,7 @@
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "source_path": "hashicorp/bionic64",
-            "template": "./builder-template.go",
+            "template": "./vagrant-ubuntu1804-hyperv-template.go",
             "add_force": true
         }
     ],
@@ -15,7 +15,7 @@
         {
             "type": "shell",
             "scripts": [
-                "./provision/update-box.sh"
+                "./provision/test.sh"
             ]
         }
     ]

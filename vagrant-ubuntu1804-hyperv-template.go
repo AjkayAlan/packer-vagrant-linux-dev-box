@@ -5,7 +5,6 @@ Vagrant.configure("2") do |config|
   end
   config.vm.define "output" do |output|
 	output.vm.box = "{{.BoxName}}"
-	output.vm.box_url = "file://package.box"
 	config.ssh.insert_key = {{.InsertKey}}
   end
   {{ if ne .SyncedFolder "" -}}
