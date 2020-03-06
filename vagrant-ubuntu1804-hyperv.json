@@ -4,6 +4,8 @@
             "type": "vagrant",
             "provider": "hyperv",
             "communicator": "ssh",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
             "source_path": "hashicorp/bionic64",
             "add_force": true
         }
@@ -14,13 +16,6 @@
             "scripts": [
                 "./provision/update-box.sh"
             ]
-        }
-    ],
-    "post-processors": [
-        {
-            "type": "vagrant",
-            "keep_input_artifact": true,
-            "output": "ubuntu-1804-dev-gui-{{.Provider}}"
         }
     ]
 }
