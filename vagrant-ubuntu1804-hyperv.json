@@ -7,6 +7,7 @@
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "source_path": "hashicorp/bionic64",
+            "template": "./builder-template.go",
             "add_force": true
         }
     ],
