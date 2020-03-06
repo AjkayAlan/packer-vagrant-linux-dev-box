@@ -1,0 +1,26 @@
+{
+    "builders": [
+        {
+            "type": "vagrant",
+            "provider": "hyperv",
+            "communicator": "ssh",
+            "source_path": "hashicorp/bionic64",
+            "add_force": true
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "./provision/update-box.sh"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "keep_input_artifact": true,
+            "output": "ubuntu-1804-dev-gui-{{.Provider}}"
+        }
+    ]
+}
