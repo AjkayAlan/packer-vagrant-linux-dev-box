@@ -51,7 +51,8 @@
                 "./provision/install-vscode.sh",
                 "./provision/install-pycharm.sh",
                 "./provision/install-intellij.sh",
-                "./provision/install-terminus.sh"
+                "./provision/install-terminus.sh",
+                "./provision/fix-grub-timeout.sh"
             ]
         }
     ],
@@ -62,7 +63,7 @@
             "environment_vars": ["OUTPUT_BOX_NAME={{user `OUTPUT_BOX_NAME`}}"],
             "execute_command": ["powershell.exe", "{{.Vars}} {{.Script}}"],
             "env_var_format": "$env:%s=\"%s\"; ",
-            "inline": ["Rename-Item -Path '.\\output-vagrant\\package.box' -NewName $env:OUTPUT_BOX_NAME"]
+            "inline": ["Rename-Item -Path '.\\output-vagrant\\package.box' -NewName $($env:OUTPUT_BOX_NAME).box"]
         }
     ]
 }
