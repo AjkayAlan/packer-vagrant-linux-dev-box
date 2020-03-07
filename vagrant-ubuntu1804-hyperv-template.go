@@ -1,21 +1,21 @@
 Vagrant.configure("2") do |config|
+  config.vagrant.plugins = ["vagrant-env"]
+  config.env.enable
+
+  config.ssh.insert_key = {{.InsertKey}}
+
   config.vm.define "source", autostart: false do |source|
-	source.vm.box = "{{.SourceBox}}"
-	config.ssh.insert_key = {{.InsertKey}}
+	  source.vm.box = "{{.SourceBox}}"
   end
   config.vm.define "output" do |output|
-	output.vm.box = "{{.BoxName}}"
-	config.ssh.insert_key = {{.InsertKey}}
+	  output.vm.box = "{{.BoxName}}"
   end
-  {{ if ne .SyncedFolder "" -}}
-  		config.vm.synced_folder "{{.SyncedFolder}}", "/vagrant"
-  {{- else -}}
-  		config.vm.synced_folder ".", "/vagrant", disabled: true
-  {{- end}}
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.provider :hyperv do |hyperv|
-	hyperv.memory = 4096
-	hyperv.maxmemory = 4096
-	hyperv.cpus = 4
+	  hyperv.memory = ENV["MEMORY"]
+  	hyperv.maxmemory = ENV["MAX_MEMORY"]
+  	hyperv.cpus = ENV["CPU_COUNT"]
   end
-  config.vm.network "public_network", bridge: "Default Switch"
+
 end
