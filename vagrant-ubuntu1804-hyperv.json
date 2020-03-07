@@ -15,7 +15,6 @@
             "source_path": "{{user `BASE_BOX_NAME`}}",
             "box_name": "{{user `BASE_BOX_NAME`}}",
             "template": "./vagrant-ubuntu1804-hyperv-template.go",
-            "skip_add": true,
             "add_force": true
         }
     ],
