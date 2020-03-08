@@ -14,3 +14,6 @@ sudo apt update
 
 # Install PowerShell
 sudo apt install -y powershell
+
+# Cleanup
+rm packages-microsoft-prod.deb

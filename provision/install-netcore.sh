@@ -7,3 +7,6 @@ sudo add-apt-repository universe
 sudo apt update
 sudo apt install -y apt-transport-https
 sudo apt install -y dotnet-sdk-3.1
+
+# Cleanup
+rm packages-microsoft-prod.deb
