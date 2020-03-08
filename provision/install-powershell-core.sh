@@ -6,11 +6,11 @@ wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-pr
 # Register the Microsoft repository GPG keys
 sudo dpkg -i packages-microsoft-prod.deb
 
-# Update the list of products
-sudo apt update
-
 # Enable the "universe" repositories
 sudo add-apt-repository universe
+
+# Update the list of products
+sudo apt update
 
 # Install PowerShell
 sudo apt install -y powershell
