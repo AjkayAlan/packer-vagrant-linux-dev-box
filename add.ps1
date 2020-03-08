@@ -15,4 +15,4 @@ foreach ($line in $content) {
     }
 }
 
-vagrant box add .\output-vagrant\$($env:OUTPUT_BOX_NAME).box --force --name $env:OUTPUT_BOX_NAME
+vagrant box add .\output-vagrant\$($env:OUTPUT_BOX_NAME).zip --force --name $env:OUTPUT_BOX_NAME

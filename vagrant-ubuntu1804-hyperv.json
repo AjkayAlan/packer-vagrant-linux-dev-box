@@ -52,7 +52,8 @@
                 "./provision/install-pycharm.sh",
                 "./provision/install-intellij.sh",
                 "./provision/install-alacritty.sh",
-                "./provision/fix-grub-timeout.sh"
+                "./provision/fix-grub-timeout.sh",
+                "./provision/reduce-box-size.sh"
             ]
         }
     ],
@@ -64,6 +65,19 @@
             "execute_command": ["powershell.exe", "{{.Vars}} {{.Script}}"],
             "env_var_format": "$env:%s=\"%s\"; ",
             "inline": ["Rename-Item -Path '.\\output-vagrant\\package.box' -NewName $($env:OUTPUT_BOX_NAME).box"]
+        },
+        {
+            "type": "compress",
+            "output": "./output-vagrant/{{user `OUTPUT_BOX_NAME`}}.zip",
+            "compression_level": 9
+        },
+        {
+            "type": "shell-local",
+            "tempfile_extension": ".ps1",
+            "environment_vars": ["OUTPUT_BOX_NAME={{user `OUTPUT_BOX_NAME`}}"],
+            "execute_command": ["powershell.exe", "{{.Vars}} {{.Script}}"],
+            "env_var_format": "$env:%s=\"%s\"; ",
+            "inline": ["Compress-Archive -Path '.\\metadata.json' -Update -DestinationPath '.\\output-vagrant\\$($env:OUTPUT_BOX_NAME).zip'"]
         }
     ]
 }
