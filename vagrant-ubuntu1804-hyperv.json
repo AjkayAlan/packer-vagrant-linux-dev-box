@@ -64,12 +64,7 @@
             "environment_vars": ["OUTPUT_BOX_NAME={{user `OUTPUT_BOX_NAME`}}"],
             "execute_command": ["powershell.exe", "{{.Vars}} {{.Script}}"],
             "env_var_format": "$env:%s=\"%s\"; ",
-            "inline": ["Rename-Item -Path '.\\output-vagrant\\package.box' -NewName $($env:OUTPUT_BOX_NAME).box"]
-        },
-        {
-            "type": "compress",
-            "output": "./output-vagrant/{{user `OUTPUT_BOX_NAME`}}.zip",
-            "compression_level": 9
+            "inline": ["Rename-Item -Path '.\\output-vagrant\\package.box' -NewName '$($env:OUTPUT_BOX_NAME).box'"]
         },
         {
             "type": "shell-local",
@@ -77,7 +72,7 @@
             "environment_vars": ["OUTPUT_BOX_NAME={{user `OUTPUT_BOX_NAME`}}"],
             "execute_command": ["powershell.exe", "{{.Vars}} {{.Script}}"],
             "env_var_format": "$env:%s=\"%s\"; ",
-            "inline": ["Compress-Archive -Path '.\\metadata.json' -Update -DestinationPath '.\\output-vagrant\\$($env:OUTPUT_BOX_NAME).zip'"]
+            "inline": ["Copy-Item '.\\metadata.json' -Destination '.\\output-vagrant'"]
         }
     ]
 }
