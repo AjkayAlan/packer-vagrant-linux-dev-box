@@ -1,0 +1,44 @@
+{
+    "variables": {
+        "BASE_BOX_NAME": "{{env `BASE_BOX_NAME`}}",
+        "OUTPUT_BOX_NAME": "{{env `OUTPUT_BOX_NAME`}}"
+    },
+    "builders": [
+        {
+            "type": "vagrant",
+            "provider": "virtualbox",
+            "communicator": "ssh",
+            "source_path": "{{user `BASE_BOX_NAME`}}",
+            "template": "./linux-template.go",
+            "box_name": "{{user `BASE_BOX_NAME`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "./provision/update-box.sh",
+                "./provision/install-basics.sh",
+                "./provision/install-git.sh",
+                "./provision/install-zsh.sh",
+                "./provision/install-desktop.sh",
+                "./provision/install-chromium.sh",
+                "./provision/install-nvm-node.sh",
+                "./provision/install-pyenv-python.sh",
+                "./provision/install-gvm-go.sh",
+                "./provision/install-rvm-ruby.sh",
+                "./provision/install-sdkman.sh",
+                "./provision/install-jabba-java.sh",
+                "./provision/install-netcore.sh",
+                "./provision/install-powershell-core.sh",
+                "./provision/install-awscli.sh",
+                "./provision/install-vscode.sh",
+                "./provision/install-pycharm.sh",
+                "./provision/install-intellij.sh",
+                "./provision/install-alacritty.sh",
+                "./provision/fix-grub-timeout.sh",
+                "./provision/reduce-box-size.sh"
+            ]
+        }
+    ]
+}

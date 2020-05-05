@@ -28,17 +28,17 @@ vagrant plugin install vagrant-env
 ## Building
 CD to the repo root, and run the build script!
 ```
-./build.ps1
+./scripts/build.ps1
 ```
 
 ## Adding The Box
 After building, you can add it to be used by your future projects by running the following (note this is based on how I have named my box):
 ```
-./add.ps1
+./scripts/add.ps1
 ```
 
 ## Testing The Box
 After you have added the box to your machine, you can make a small [vagrantfile that you can use. Note for this specific image, it is setup to use [enhanced mode](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect). You need to enable it on your system after booting the instance:
 ```
-./run.ps1
+./scripts/run.ps1
 ```
