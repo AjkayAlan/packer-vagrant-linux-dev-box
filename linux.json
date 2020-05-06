@@ -9,19 +9,19 @@
             "provider": "virtualbox",
             "communicator": "ssh",
             "source_path": "{{user `BASE_BOX_NAME`}}",
-            "template": "./linux-template.go",
-            "box_name": "{{user `BASE_BOX_NAME`}}"
+            "box_name": "{{user `BASE_BOX_NAME`}}",
+            "template": "./linux-template.go"
         }
     ],
     "provisioners": [
         {
             "type": "shell",
             "scripts": [
+                "./provision/install-apt-fast.sh",
                 "./provision/update-box.sh",
                 "./provision/install-basics.sh",
                 "./provision/install-git.sh",
                 "./provision/install-zsh.sh",
-                "./provision/install-desktop.sh",
                 "./provision/install-chromium.sh",
                 "./provision/install-nvm-node.sh",
                 "./provision/install-pyenv-python.sh",
@@ -35,7 +35,7 @@
                 "./provision/install-vscode.sh",
                 "./provision/install-pycharm.sh",
                 "./provision/install-intellij.sh",
-                "./provision/install-alacritty.sh",
+                "./provision/install-desktop.sh",
                 "./provision/fix-grub-timeout.sh",
                 "./provision/reduce-box-size.sh"
             ]

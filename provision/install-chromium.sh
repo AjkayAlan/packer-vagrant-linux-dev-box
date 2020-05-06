@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 # Install chromium
-sudo apt install -y chromium-browser
+sudo apt-fast install -y chromium-browser

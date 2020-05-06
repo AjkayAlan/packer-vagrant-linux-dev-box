@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install basic nice to have things
-sudo apt install -y \
+sudo apt-fast install -y \
     apt-transport-https \
     bzip2 \
     ca-certificates \

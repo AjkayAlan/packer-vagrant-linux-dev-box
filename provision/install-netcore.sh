@@ -5,8 +5,8 @@ wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-pr
 sudo dpkg -i packages-microsoft-prod.deb
 sudo add-apt-repository universe
 sudo apt update
-sudo apt install -y apt-transport-https
-sudo apt install -y dotnet-sdk-3.1
+sudo apt-fast install -y apt-transport-https
+sudo apt-fast install -y dotnet-sdk-3.1
 
 # Cleanup
 rm packages-microsoft-prod.deb

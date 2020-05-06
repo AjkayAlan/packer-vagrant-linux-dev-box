@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Install needed dependencies
-sudo apt install -y \
+sudo apt-fast install -y \
     curl \
     git \
     mercurial \
