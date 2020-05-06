@@ -17,4 +17,4 @@ jobs:
           for v in `cat .env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
       - name: Run Packer Build
         run: |
-          packer build .\linux.json
+          packer build linux.json
