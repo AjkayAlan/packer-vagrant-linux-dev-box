@@ -10,7 +10,7 @@
             "communicator": "ssh",
             "source_path": "{{user `BASE_BOX_NAME`}}",
             "box_name": "{{user `BASE_BOX_NAME`}}",
-            "template": "./linux-template.go"
+            "template": "linux-template.go"
         }
     ],
     "provisioners": [
