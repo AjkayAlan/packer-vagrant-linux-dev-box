@@ -1,4 +1,4 @@
-name: "Build Boxes"
+name: Build Boxes
 on:
   push:
     branches:
