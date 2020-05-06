@@ -26,7 +26,7 @@
                 "./provision/install-nvm-node.sh",
                 "./provision/install-pyenv-python.sh",
                 "./provision/install-gvm-go.sh",
-                "./provision/install-rvm-ruby.sh",
+                "./provision/install-ruby.sh",
                 "./provision/install-sdkman.sh",
                 "./provision/install-jabba-java.sh",
                 "./provision/install-netcore.sh",
