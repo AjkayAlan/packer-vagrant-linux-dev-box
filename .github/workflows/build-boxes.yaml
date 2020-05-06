@@ -15,10 +15,11 @@ jobs:
       - name: Set ENV Variables
         run: |
           for v in `cat .env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
-      - name: Run Packer Build
+      - name: Packer Build
         run: |
           packer build linux.json
-      - uses: actions/upload-artifact@v2
+      - name: Upload Box To Artifacts 
+        uses: actions/upload-artifact@v2
         with:
           name: box
           path: output-vagrant/package.box
