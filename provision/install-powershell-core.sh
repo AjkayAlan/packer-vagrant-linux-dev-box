@@ -13,7 +13,7 @@ sudo add-apt-repository universe
 sudo apt update
 
 # Install PowerShell
-sudo apt install -y powershell
+sudo apt-fast install -y powershell
 
 # Cleanup
 rm packages-microsoft-prod.deb

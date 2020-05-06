@@ -5,13 +5,14 @@ Vagrant.configure("2") do |config|
   config.env.enable
 
   config.vm.box = ENV['OUTPUT_BOX_NAME']
-  config.vm.network ENV['NETWORK_IDENTIFIER'], bridge: ENV['BRIDGE_NAME']
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
-  config.vm.provider :hyperv do |hyperv|
-    hyperv.vmname = ENV['OUTPUT_BOX_NAME']
-    hyperv.memory = ENV['MEMORY']
-    hyperv.maxmemory = ENV['MAX_MEMORY']
-    hyperv.cpus = ENV['CPU_COUNT']
+  config.vm.provider :virtualbox do |vb|
+    vb.gui = true
+    vb.default_nic_type = "virtio"
+    vb.memory = ENV['MEMORY']
+    vb.cpus = ENV['CPU_COUNT']
+    vb.customize ["modifyvm", :id, "--vram", "128"]
+    vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
   end
 end

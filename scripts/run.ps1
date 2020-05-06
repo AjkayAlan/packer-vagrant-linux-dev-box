@@ -15,4 +15,4 @@ foreach ($line in $content) {
     }
 }
 
-packer build .\vagrant-ubuntu1804-hyperv.json
+vagrant up

@@ -15,7 +15,4 @@ foreach ($line in $content) {
     }
 }
 
-vagrant up
-vagrant halt
-Set-VM -VMName $env:OUTPUT_BOX_NAME -EnhancedSessionTransportType HvSocket
-vagrant up
+packer build .\linux.json

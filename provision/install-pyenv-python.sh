@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Install dependencies for pyenv
-sudo apt install -y \
+sudo apt-fast install -y \
     make \
     build-essential \
     libssl-dev \

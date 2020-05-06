@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 # Install kde
-sudo apt install -y kde-plasma-desktop
+sudo DEBIAN_FRONTEND=noninteractive apt-fast -y -o DPkg::options::="--force-confdef" -o DPkg::options::="--force-confold" install kde-plasma-desktop
