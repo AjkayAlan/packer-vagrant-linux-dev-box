@@ -1,4 +1,4 @@
-name: "Build Boxes"
+name: Build Boxes
 on:
   push:
     branches:
@@ -18,7 +18,8 @@ jobs:
       - name: Run Packer Build
         run: |
           packer build linux.json
-      - uses: actions/upload-artifact@v2
+      - name: Upload Box To Artifact 
+        uses: actions/upload-artifact@v2
         with:
           name: box
           path: output-vagrant/package.box
