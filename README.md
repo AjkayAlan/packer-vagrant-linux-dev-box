@@ -42,6 +42,7 @@ I am using a GitHub Action to build this, and am uploading the built box to a pr
 2. Deploy the CloudFormation template
 3. Grab the AccessKey and SecretKey from the CloudFormation
 4. Store them as secrets with your GitHub Repository, using `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
-5. Commit to master and the build will run!
+5. Update the `Upload Box To S3 Bucket` step in the workflow to use the bucket you created
+6. Commit to master and the build will run!
 
 Make sure you change the AWS region in the workflow if you are not using us-east-1 (N. Virginia).

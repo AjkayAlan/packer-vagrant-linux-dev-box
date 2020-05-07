@@ -20,7 +20,7 @@ jobs:
           packer build ubuntu.json
       - name: Upload Box To S3 Bucket
         run: |
-          aws s3 cp output-vagrant/package.box s3://mybucket/package.box
+          aws s3 cp output-vagrant/package.box s3://packer-ubuntu-dev-box-ajkayalan/package.box
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
