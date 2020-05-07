@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Create a S3 bucket and an IAM user allowed to upload to that S3 bucket.
+Parameters:
+  pBucketName:
+    Description: 'Name of the bucket'
+    Type: String
+    AllowedPattern: (?=^.{3,63}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)
+  pPassword:
+    NoEcho: 'true'
+    Type: String
+    Description: New account password
+    MinLength: '20'
+    MaxLength: '41'
+    ConstraintDescription: The password must be between 20 and 41 characters
+Resources:
+  rS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName: !Ref pBucketName
+      LifecycleConfiguration:
+        Rules:
+          - Id: DeleteAfter30Days
+            Status: 'Enabled'
+            ExpirationInDays: 30
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  rIAMUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      LoginProfile:
+        Password: !Ref pPassword
+  rIAMUserPolicy:
+    Type: 'AWS::IAM::Policy'
+    Properties:
+      PolicyName: IAMUserUploadToS3
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action:
+              - 's3:PutObject'
+              - 's3:PutObjectAcl'
+              - 's3:GetObject'
+              - 's3:GetObjectAcl'
+              - 's3:DeleteObject'
+            Resource:
+              !Sub
+                - "arn:aws:s3:::${S3Bucket}/*"
+                - { S3Bucket: !Ref rS3Bucket }
+      Users:
+        - !Ref rIAMUser
+  rIAMUserKeys:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref rIAMUser
+Outputs:
+  AccessKey:
+    Value: !Ref rIAMUserKeys
+    Description: AWSAccessKeyId of new user
+  SecretKey:
+    Value: !GetAtt 
+      - rIAMUserKeys
+      - SecretAccessKey
+    Description: AWSSecretKey of new user

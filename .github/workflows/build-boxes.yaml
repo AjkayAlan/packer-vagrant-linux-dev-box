@@ -7,7 +7,7 @@ defaults:
   run:
     shell: bash
 jobs:
-  build-linux-box:
+  build-ubuntu-box:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -17,9 +17,11 @@ jobs:
           for v in `cat .env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
       - name: Packer Build
         run: |
-          packer build linux.json
-      - name: Upload Box To Artifacts 
-        uses: actions/upload-artifact@v2
-        with:
-          name: box
-          path: output-vagrant/package.box
+          packer build ubuntu.json
+      - name: Upload Box To S3 Bucket
+        run: |
+          aws s3 cp output-vagrant/package.box s3://mybucket/package.box
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1

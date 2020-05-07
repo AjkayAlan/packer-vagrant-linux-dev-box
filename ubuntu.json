@@ -1,7 +1,6 @@
 {
     "variables": {
-        "BASE_BOX_NAME": "{{env `BASE_BOX_NAME`}}",
-        "OUTPUT_BOX_NAME": "{{env `OUTPUT_BOX_NAME`}}"
+        "BASE_BOX_NAME": "{{env `BASE_BOX_NAME`}}"
     },
     "builders": [
         {
