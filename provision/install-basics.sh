@@ -16,6 +16,7 @@ sudo apt install -y \
     python-apt \
     python-pycurl \
     sed \
+    snapd \
     software-properties-common \
     tar \
     unzip \

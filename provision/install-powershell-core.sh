@@ -1,7 +1,10 @@
 #!/bin/zsh
 
-# Have to use preview per https://github.com/PowerShell/PowerShell-Snap#known-issues.
-sudo snap install powershell-preview --classic
+# Install PowerShell Core and make it available
+wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y powershell
 
-# TODO: Replace preview with this when it actually works
-# sudo snap install powershell --classic
+# Cleanup
+rm packages-microsoft-prod.deb

@@ -1,6 +1,6 @@
-# packer-vagrant-ubuntu-dev-box
+# packer-vagrant-linux-dev-box
 
-Creates a base developer ubuntu box with Packer that can be extended upon using vagrant. Installs a gui, some nice IDE's, and a fair bit of programming languages.
+Creates a base developer linux box with Packer that can be extended upon using vagrant. Installs a gui, some nice IDE's, and a fair bit of programming languages.
 
 ## Computer Setup
 
@@ -34,10 +34,10 @@ for v in `cat .env` ; do export ${v%%=*}=${v##*=} ; done
 
 Then build it:
 ```sh
-packer build ubuntu.json
+packer build debian.json
 ```
 
-## Building With CI/CD
+## DISABLED: Building With CI/CD
 
 I am using a [GitHub Action](https://help.github.com/en/actions) to build this, and am uploading the built box to a private S3 bucket. It is fairly easy to setup:
 
@@ -54,9 +54,9 @@ Make sure you change the AWS region in the workflow if you are not using us-east
 If you have built the box locally and want to test it, add it to your boxes
 
 ```sh
-vagrant box add .\output-vagrant\package.box --force --name ubuntu-dev
+vagrant box add .\output-vagrant\package.box --force --name debian-dev
 ```
 
 ## Running Locally
 
-See https://github.com/AjkayAlan/vagrant-ubuntu-dev
+See https://github.com/AjkayAlan/vagrant-linux-dev

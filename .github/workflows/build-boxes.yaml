@@ -7,7 +7,7 @@ defaults:
   run:
     shell: bash
 jobs:
-  build-ubuntu-box:
+  build-linux-box:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -17,10 +17,10 @@ jobs:
           for v in `cat .env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
       - name: Packer Build
         run: |
-          packer build ubuntu.json
+          packer build debian.json
       - name: Upload Box To S3 Bucket
         run: |
-          aws s3 cp output-vagrant/package.box s3://packer-ubuntu-dev-box-ajkayalan/package.box
+          aws s3 cp output-vagrant/package.box s3://packer-debian-dev-box-ajkayalan/package.box
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

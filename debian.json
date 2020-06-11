@@ -9,7 +9,7 @@
             "communicator": "ssh",
             "source_path": "{{user `BASE_BOX_NAME`}}",
             "box_name": "{{user `BASE_BOX_NAME`}}",
-            "template": "ubuntu-template.go"
+            "template": "hyperv-template.go"
         }
     ],
     "provisioners": [
@@ -45,6 +45,7 @@
                 "./provision/install-vscode.sh",
                 "./provision/install-pycharm.sh",
                 "./provision/install-intellij.sh",
+                "./provision/install-terminal.sh",
                 "./provision/fix-grub-timeout.sh",
                 "./provision/reduce-box-size.sh"
             ]
