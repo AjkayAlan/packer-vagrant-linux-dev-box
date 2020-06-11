@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Install dependencies for pyenv
-sudo apt-fast install -y \
+sudo apt install -y \
     make \
     build-essential \
     libssl-dev \
@@ -22,7 +22,7 @@ sudo apt-fast install -y \
     git
 
 # Install pyenv
-curl https://pyenv.run | zsh
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | zsh
 
 # Initialize pyenv in shell
 echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc

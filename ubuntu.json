@@ -5,7 +5,7 @@
     "builders": [
         {
             "type": "vagrant",
-            "provider": "virtualbox",
+            "provider": "hyperv",
             "communicator": "ssh",
             "source_path": "{{user `BASE_BOX_NAME`}}",
             "box_name": "{{user `BASE_BOX_NAME`}}",
@@ -16,12 +16,23 @@
         {
             "type": "shell",
             "scripts": [
-                "./provision/install-apt-fast.sh",
                 "./provision/update-box.sh",
                 "./provision/install-basics.sh",
                 "./provision/install-git.sh",
                 "./provision/install-zsh.sh",
-                "./provision/install-chromium.sh",
+                "./provision/install-desktop.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "script": "./provision/reboot.sh",
+            "expect_disconnect": true
+        },
+        {
+            "type": "shell",
+            "scripts": [
+                "./provision/install-xrdp.sh",
+                "./provision/install-firefox.sh",
                 "./provision/install-nvm-node.sh",
                 "./provision/install-pyenv-python.sh",
                 "./provision/install-gvm-go.sh",
@@ -34,7 +45,6 @@
                 "./provision/install-vscode.sh",
                 "./provision/install-pycharm.sh",
                 "./provision/install-intellij.sh",
-                "./provision/install-desktop.sh",
                 "./provision/fix-grub-timeout.sh",
                 "./provision/reduce-box-size.sh"
             ]

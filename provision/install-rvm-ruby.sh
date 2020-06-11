@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Install dependencies
-sudo apt-fast install -y \
+sudo apt install -y \
     software-properties-common \
     gnupg2
 

@@ -9,7 +9,7 @@ jabba install adopt@1.11-0
 jabba use adopt@1.11-0
 
 # Install Maven
-sudo apt-fast install -y maven
+sudo apt install -y maven
 
 # Install Gradle
 sdk install gradle

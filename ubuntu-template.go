@@ -9,9 +9,4 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
-
-  config.vm.provider :virtualbox do |vb|
-	  vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
-	  vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
-  end
 end

@@ -49,3 +49,14 @@ I am using a [GitHub Action](https://help.github.com/en/actions) to build this, 
 1. Commit to master and the build will run!
 
 Make sure you change the AWS region in the workflow if you are not using us-east-1 (N. Virginia).
+
+## Adding The Box Locally
+If you have built the box locally and want to test it, add it to your boxes
+
+```sh
+vagrant box add .\output-vagrant\package.box --force --name ubuntu-dev
+```
+
+## Running Locally
+
+See https://github.com/AjkayAlan/vagrant-ubuntu-dev
